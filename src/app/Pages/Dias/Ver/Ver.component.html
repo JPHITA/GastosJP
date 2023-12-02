@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons *ngIf="_Dia.nEstado == 0 && !Mama" slot="end">
+      <ion-button (click)="ActionSheet()">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title>Ver Dia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          {{_Dia.nFecha | Date}}
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          Estado: {{VerEstado()}}
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          Total: {{_Dia.Total() | Currency}} $
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-list>
+
+          <ion-list-header>
+            <ion-label>
+              Gastos
+            </ion-label>
+          </ion-list-header>
+
+          <ion-item *ngFor="let Dia of _Dia.Gastos" style="border-bottom: 1px white solid;">
+            <ion-grid>
+
+              <ion-row>
+                <ion-col style="text-align: center;">
+                  {{Dia.nValor | Currency}} $
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label position="floating">Descripción</ion-label>
+                    <ion-textarea readonly="true" [value]="Dia.sDescripcion"></ion-textarea>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+
+            </ion-grid>
+          </ion-item>
+
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+
+<app-tabs ActiveTab="Dias"></app-tabs>

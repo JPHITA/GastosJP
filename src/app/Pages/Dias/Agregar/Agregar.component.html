@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Dia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-button color="success" expand="block" (click)="Guardar()">Agregar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" expand="block" [routerLink]="['/Dias']">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-item>
+          <ion-label>Fecha</ion-label>
+          <ion-datetime #Fecha (ionChange)="AsignarFecha(Fecha)" cancel-text="Cancelar" done-text="Hecho"
+            [monthShortNames]="NomMeses" displayFormat="DD/MMM/YYYY" placeholder="Fecha"></ion-datetime>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-radio-group [(ngModel)]="_Dia.nEstado">
+
+          <ion-list-header>
+            <ion-label>Estado</ion-label>
+          </ion-list-header>
+
+          <ion-item *ngFor="let Estado of Estados">
+            <ion-label>{{Estado.Desc}}</ion-label>
+            <ion-radio slot="start" [value]="Estado.Id"></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+
+          <ion-item>
+            <ion-grid>
+
+              <ion-row class="ion-align-items-center">
+                <ion-col size="5">
+                  <ion-label>Gastos</ion-label>
+                </ion-col>
+
+                <ion-col size="5">
+                  <ion-label>
+                    {{TotalGastos() | Currency}} $
+                  </ion-label>
+                </ion-col>
+
+                <ion-col size="2">
+                  <ion-button color="success" expand="block" (click)="AgregarGasto()">+</ion-button>
+                </ion-col>
+              </ion-row>
+
+            </ion-grid>
+          </ion-item>
+
+          <ion-item *ngFor="let item of _Dia.Gastos; let i=index" style="border-top: 1px white solid;">
+            <ion-grid>
+
+              <ion-row>
+                <ion-col size="10">
+                  <ion-item>
+                    <ion-input type="text" placeholder="Valor" [(ngModel)]="item.nValor" (ionChange)="FormatoValor(i, $event)"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size="2">
+                  <ion-button color="danger" expand="block" (click)="EliminarGasto(i)">X</ion-button>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-textarea placeholder="Descripción" [(ngModel)]="item.sDescripcion"></ion-textarea>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+
+            </ion-grid>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+
+<app-tabs ActiveTab="Dia"></app-tabs>

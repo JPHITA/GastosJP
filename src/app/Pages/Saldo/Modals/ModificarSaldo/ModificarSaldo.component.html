@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modificar Saldo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-list>
+
+          <ion-radio-group #Tipo value="Sumar">
+
+            <!-- <ion-list-header>
+              <ion-label>Tipo</ion-label>
+            </ion-list-header> -->
+
+            <ion-item>
+              <ion-label>Sumar</ion-label>
+              <ion-radio slot="start" value="Sumar" selected></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Descontar</ion-label>
+              <ion-radio slot="start" value="Restar"></ion-radio>
+            </ion-item>
+
+          </ion-radio-group>
+
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-item>
+          <ion-label position="floating">Valor</ion-label>
+          <ion-input #Valor min="0" (ionChange)="FormatoValor(Valor)"></ion-input>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-item>
+          <ion-label position="floating">Descripción</ion-label>
+          <ion-textarea #Desc auto-grow="true"></ion-textarea>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button color="success" expand="block" (click)="ModificarSaldo(Tipo, Valor, Desc)">Aceptar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" expand="block" (click)="CerrarModal()">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

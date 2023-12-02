@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+        <ion-item>
+
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-label>
+            {{Historico.FechaCambio | Date}}
+          </ion-label>
+
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-item>
+
+          <ion-icon name="cash-outline" slot="start"></ion-icon>
+          <ion-label style="color: {{Historico.Color}};">
+            {{Historico.ValorCambio | Currency}} $
+          </ion-label>
+
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-item>
+
+          <!-- <ion-label> -->
+            <ion-icon name="document-text-outline" slot="start"></ion-icon>
+          <!-- </ion-label> -->
+
+          <ion-textarea readonly="true" value="{{Historico.Desc}}" auto-grow="true"></ion-textarea>
+
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="CerrarModal()">Aceptar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

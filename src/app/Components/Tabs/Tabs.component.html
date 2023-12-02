@@ -1,0 +1,17 @@
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" [selectedTab]="ActiveTab">
+
+        <ion-tab-button tab="Saldo" [routerLink]="['/Saldo']" routerDirection="root">
+            <ion-icon name="cash-outline"></ion-icon>
+            <ion-label>Saldo</ion-label>
+          </ion-tab-button>
+
+      <ion-tab-button tab="Dias" [routerLink]="['/Dias']" routerDirection="root">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>Dias</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

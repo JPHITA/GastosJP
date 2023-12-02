@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" *ngIf="!Mama">
+      <ion-button (click)="ActionSheet()">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title>Dias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item *ngFor="let Dia of Dias" detail="true" button="true" [routerLink]="['/Dias/Ver', Dia.iDia]">
+    <ion-grid>
+      <ion-row>
+
+        <ion-col size="8">
+          {{Dia.nFecha | Date}}
+        </ion-col>
+
+        <ion-col size="4">
+          {{Dia.Total() | Currency}} $
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+</ion-content>
+
+<app-tabs ActiveTab="Dias"></app-tabs>

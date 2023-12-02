@@ -1,0 +1,7 @@
+{
+  "name": "GastosJP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
